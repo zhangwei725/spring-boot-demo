@@ -1,0 +1,54 @@
+version: "3"
+services:
+  mysql-master:
+    image: mysql:5.7.22
+    restart: always
+    hostname: mysql-master
+    container_name: mysql-master
+    ports:
+      - 3307:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Shanghai
+    volumes:
+      - /opt/master/mysql/data:/var/lib/mysql
+      - /opt/master/mysql/log:/var/log/mysql
+    command:
+      --server_id=100
+      --log-bin=mysql-master-bin
+      --sync_binlog=1
+      --binlog-ignore-db=mysql
+      --binlog_format=mixed
+      --expire_logs_days=7
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+    links:
+      -  mysql-slave-read
+  mysql-slave-read:
+    image: mysql:5.7.22
+    restart: always
+    hostname: mysql-slave-read
+    container_name: mysql-slave-read
+    ports:
+      - 3308:3306
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      TZ: Asia/Shanghai
+    volumes:
+      - /opt/slave/mysql/data:/var/lib/mysql
+      - /opt/slave/mysql/log:/var/log/mysql
+    command:
+      --server_id=200
+      --read_only=1
+      --binlog-ignore-db=mysql
+      --default-authentication-plugin=mysql_native_password
+      --character-set-server=utf8mb4
+      --collation-server=utf8mb4_general_ci
+      --explicit_defaults_for_timestamp=true
+      --lower_case_table_names=1
+
+
+      

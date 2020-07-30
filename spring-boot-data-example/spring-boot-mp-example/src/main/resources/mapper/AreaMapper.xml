@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.mp.mapper.AreaMapper">
+    <resultMap id="BaseResultMap" type="com.smart.mp.entity.Area">
+        <id column="area_id" jdbcType="INTEGER" property="areaId"/>
+        <result column="area_code" jdbcType="VARCHAR" property="areaCode"/>
+        <result column="area_name" jdbcType="VARCHAR" property="areaName"/>
+        <result column="level" jdbcType="TINYINT" property="level"/>
+        <result column="city_code" jdbcType="VARCHAR" property="cityCode"/>
+        <result column="center" jdbcType="VARCHAR" property="center"/>
+        <result column="parent_id" jdbcType="INTEGER" property="parentId"/>
+        <result column="is_del" jdbcType="INTEGER" property="isDel"/>
+        <result column="version" jdbcType="INTEGER" property="version"/>
+    </resultMap>
+    <!--   -->
+    <select id="selectByName" resultMap="BaseResultMap">
+        SELECT *
+        FROM t_area
+        WHERE area_name#{name};
+    </select>
+</mapper>

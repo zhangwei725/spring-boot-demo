@@ -1,0 +1,7 @@
+logging:
+  config: "classpath:logback-spring-dev.xml"
+  level:
+    root: debug
+    com.smart.log.mapper: debug
+    com.smart.log.controller: debug
+

@@ -1,0 +1,118 @@
+spring:
+  datasource:
+    #  指定连接的实现类
+    type: com.alibaba.druid.pool.DruidDataSource
+    #    druid相关的配置
+    druid:
+      url: "jdbc:mysql://119.23.190.71:3306/db_sb_example?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
+      password: "root"
+      username: "root"
+      # 初始化连接大小
+      initial-size: 5
+      #最大连接池数量
+      max-active: 20
+      # 最小连接池数量
+      min-idle: 3
+      # 配置获取连接等待超时的时间 单位毫秒
+      max-wait: 60000
+      # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
+      time-between-eviction-runs-millis: 60000
+      # 配置一个连接在池中最小生存的时间，单位是毫秒
+      min-evictable-idle-time-millis: 300000
+      # 测试连接
+      validation-query: select
+      # 申请连接的时候检测，建议配置为true，不影响性能，并且保证安全性
+      test-while-idle: true
+      # 获取连接时执行检测，建议关闭，影响性能
+      test-on-borrow: false
+      # 归还连接时执行检测，建议关闭，影响性能
+      test-on-return: false
+      # 打开PSCache，并且指定每个连接上PSCache的大小
+      pool-prepared-statements: true
+      #      配置监控统计拦截器 防火墙 日志配置
+      #      stat监控数据库性能
+      #      wall  用于防火墙
+      #      日志 slf4j logback
+      #      log4j
+      #      log4j2
+      # 配置多个英文逗号分隔
+      filters: stat,wall,slf4j
+
+      max-pool-prepared-statement-per-connection-size: 20
+      # 合并多个DruidDataSource的监控数据
+      use-global-data-source-stat: true
+      # 通过connectProperties属性来打开mergeSql功能；慢SQL记录 SQL优化
+      connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
+      # ===========监控配置===========
+      # WebStatFilter配置，说明请参考Druid Wiki，配置_配置WebStatFilter
+      web-stat-filter:
+        #是否启用StatFilter默认值false
+        enabled: true
+        # 拦截所有的
+        url-pattern: /*
+        # 排除一些不必要的url，比如*:js,/jslib/*等等:
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico, /druid/*"
+        # 关闭和开启session 统计功能 默认关闭
+        #        session-stat-enable: true
+        # sessionStatMaxCount是1000个
+        #        session-stat-max-count: 1000
+        # 配置principalSessionName，使得druid能够知道当前的session的用户是谁
+        #        principal-session-name:
+        # StatViewServlet配置，说明请参考Druid Wiki，配置_StatViewServlet配置
+      stat-view-servlet:
+        # 是否启用StatViewServlet默认值true
+        enabled: true
+        url-pattern: /druid/*
+        # 界面上有一个重置功能 执行这个操作之后，会导致所有计数器清零，重新计数 建议false
+        reset-enable: false
+        # 登录的后台的用户名,密码
+        login-username: admin
+        login-password: admin
+        # 访问控制，可以配置allow和deny这两个参数
+        # 配置格式 ip或者ip/子网掩码(24) 例如   192.168.2.112 ,192.168.2.112/24
+        # 注意 由于匹配规则不支持IPV6，配置了allow或者deny之后，会导致IPV6无法访问。
+        # allow:
+        # deny:
+#mybatis plus 配置
+# 约定优于配置
+mybatis-plus:
+  #  可配可不配  默认在 classpath:mapper/**/*.xml
+  mapper-locations: classpath:mapper/**/*.xml
+  configuration:
+    # 打印sql语句
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

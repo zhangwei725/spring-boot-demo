@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.smart.example.mapper.UserMapper">
+    <resultMap id="BaseResultMap" type="com.smart.example.domain.entity.User">
+        <!--@mbg.generated-->
+        <!--@Table `user`-->
+        <id column="uid" jdbcType="INTEGER" property="uid"/>
+        <result column="username" jdbcType="VARCHAR" property="username"/>
+        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="phone" jdbcType="VARCHAR" property="phone"/>
+        <result column="sex" jdbcType="BOOLEAN" property="sex"/>
+        <result column="email" jdbcType="VARCHAR" property="email"/>
+        <result column="mark" jdbcType="VARCHAR" property="mark"/>
+        <result column="last_login" jdbcType="TIMESTAMP" property="lastLogin"/>
+        <result column="login_ip" jdbcType="VARCHAR" property="loginIp"/>
+        <result column="head" jdbcType="VARCHAR" property="head"/>
+        <result column="reg_time" jdbcType="TIMESTAMP" property="regTime"/>
+        <result column="locked" jdbcType="BOOLEAN" property="locked"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        `uid`, username, `password`, phone, sex, email, mark, last_login, login_ip, head,
+        reg_time, locked
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from `user`
+        where `uid` = #{uid,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        DELETE FROM `user`
+        WHERE `uid` = #{uid,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="uid" keyProperty="uid" parameterType="com.smart.example.domain.entity.User"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        INSERT INTO `user` (username, `password`, phone,
+        sex, email, mark, last_login,
+        login_ip, head, reg_time,
+        locked)
+        VALUES (#{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{phone,jdbcType=VARCHAR},
+        #{sex,jdbcType=BOOLEAN}, #{email,jdbcType=VARCHAR}, #{mark,jdbcType=VARCHAR}, #{lastLogin,jdbcType=TIMESTAMP},
+        #{loginIp,jdbcType=VARCHAR}, #{head,jdbcType=VARCHAR}, #{regTime,jdbcType=TIMESTAMP},
+        #{locked,jdbcType=BOOLEAN})
+    </insert>
+    <insert id="insertSelective" keyColumn="uid" keyProperty="uid" parameterType="com.smart.example.domain.entity.User"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into `user`
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                `password`,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="sex != null">
+                sex,
+            </if>
+            <if test="email != null">
+                email,
+            </if>
+            <if test="mark != null">
+                mark,
+            </if>
+            <if test="lastLogin != null">
+                last_login,
+            </if>
+            <if test="loginIp != null">
+                login_ip,
+            </if>
+            <if test="head != null">
+                head,
+            </if>
+            <if test="regTime != null">
+                reg_time,
+            </if>
+            <if test="locked != null">
+                locked,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                #{sex,jdbcType=BOOLEAN},
+            </if>
+            <if test="email != null">
+                #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mark != null">
+                #{mark,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLogin != null">
+                #{lastLogin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginIp != null">
+                #{loginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="head != null">
+                #{head,jdbcType=VARCHAR},
+            </if>
+            <if test="regTime != null">
+                #{regTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="locked != null">
+                #{locked,jdbcType=BOOLEAN},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.smart.example.domain.entity.User">
+        <!--@mbg.generated-->
+        update `user`
+        <set>
+            <if test="username != null">
+                username = #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                `password` = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=VARCHAR},
+            </if>
+            <if test="sex != null">
+                sex = #{sex,jdbcType=BOOLEAN},
+            </if>
+            <if test="email != null">
+                email = #{email,jdbcType=VARCHAR},
+            </if>
+            <if test="mark != null">
+                mark = #{mark,jdbcType=VARCHAR},
+            </if>
+            <if test="lastLogin != null">
+                last_login = #{lastLogin,jdbcType=TIMESTAMP},
+            </if>
+            <if test="loginIp != null">
+                login_ip = #{loginIp,jdbcType=VARCHAR},
+            </if>
+            <if test="head != null">
+                head = #{head,jdbcType=VARCHAR},
+            </if>
+            <if test="regTime != null">
+                reg_time = #{regTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="locked != null">
+                locked = #{locked,jdbcType=BOOLEAN},
+            </if>
+        </set>
+        where `uid` = #{uid,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.smart.example.domain.entity.User">
+        <!--@mbg.generated-->
+        UPDATE `user`
+        SET username = #{username,jdbcType=VARCHAR},
+        `password` = #{password,jdbcType=VARCHAR},
+        phone = #{phone,jdbcType=VARCHAR},
+        sex = #{sex,jdbcType=BOOLEAN},
+        email = #{email,jdbcType=VARCHAR},
+        mark = #{mark,jdbcType=VARCHAR},
+        last_login = #{lastLogin,jdbcType=TIMESTAMP},
+        login_ip = #{loginIp,jdbcType=VARCHAR},
+        head = #{head,jdbcType=VARCHAR},
+        reg_time = #{regTime,jdbcType=TIMESTAMP},
+        locked = #{locked,jdbcType=BOOLEAN}
+        WHERE `uid` = #{uid,jdbcType=INTEGER}
+    </update>
+    <select id="selectUserByName" resultMap="BaseResultMap">
+        SELECT uid,
+               username,
+               password,
+               phone,
+               sex,
+               email,
+               mark,
+               last_login,
+               login_ip,
+               head,
+               reg_time,
+               locked
+        FROM user
+        WHERE username = #{username}
+
+
+    </select>
+</mapper>
