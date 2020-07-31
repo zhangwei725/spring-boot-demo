@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{css/main.css}">
+    <script th:src="@{js/main.js}"></script>
+</head>
+<body>
+<!--指令语法  组件 -->
+<h1 th:text="${uid}"></h1>
+<p th:text="${area.areaName}"></p>
+<p th:text="${#request.getRemoteAddr()}"></p>
+<div th:if="${!#session.getAttribute('isLogin')}">
+    <!--    未登录-->
+    <a href="#">登录</a>
+    <a href="#">注册</a>
+</div>
+<div th:if="${#session.getAttribute('isLogin')}">
+    <span th:text="${#session.getAttribute('username')}"></span>
+    <a href="#">登出</a>
+</div>
+
+<table>
+    <tr>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+    </tr>
+    <tr>
+        <th></th>
+    </tr>
+
+    <tr>
+        <th></th>
+    </tr>
+    <tbody>
+    <tr th:each="area,index:${areas}">
+        <td th:text="${area.areaName}"></td>
+        <td th:text="${area.cityCode}"></td>
+    </tr>
+    </tbody>
+
+</table>
+
+
+</body>
+</html>

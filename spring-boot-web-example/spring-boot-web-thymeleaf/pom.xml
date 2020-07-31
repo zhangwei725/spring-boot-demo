@@ -4,25 +4,24 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.smart</groupId>
-        <artifactId>spring-boot-demo</artifactId>
+        <artifactId>spring-boot-web-example</artifactId>
         <version>0.0.1-SNAPSHOT</version>
         <relativePath/>
     </parent>
-    <artifactId>spring-boot-web-example</artifactId>
+    <artifactId>spring-boot-web-thymeleaf</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>spring-boot-web-example</name>
+    <name>spring-boot-web-thymeleaf</name>
     <description>Demo project for Spring Boot</description>
-    <packaging>pom</packaging>
     <properties>
         <java.version>1.8</java.version>
     </properties>
     <modules>
-        <module>spring-boot-web-rest</module>
-        <module>spring-boot-web-log</module>
-        <module>spring-boot-web-swagger</module>
-        <module>spring-boot-web-thymeleaf</module>
     </modules>
     <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-thymeleaf</artifactId>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

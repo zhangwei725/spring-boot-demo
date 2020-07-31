@@ -81,6 +81,17 @@ spring:
       # 当类的的属性发生改变的时候自动更新到数据
       ddl-auto: update
 
+  servlet:
+    multipart:
+      enabled: true
+      location: "/"
+      #  单个文件上传最大数
+      max-file-size: 10MB
+      max-request-size: 50MB
+logging:
+  level:
+    root: debug
+
 
 
 

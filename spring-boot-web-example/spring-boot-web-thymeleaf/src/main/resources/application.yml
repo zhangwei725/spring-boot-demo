@@ -1,0 +1,8 @@
+spring:
+  profiles:
+    active: dev
+  mvc:
+    # 不拦截静态资源 css  js
+    static-path-pattern: /**
+
+

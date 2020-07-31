@@ -15,7 +15,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *  - log4j 1.3 apache(过时) 同步日志
  *  - logback () 异步日志
  *  - log4j2     异步日志
- *
  */
 @SpringBootApplication
 public class LogApp {
