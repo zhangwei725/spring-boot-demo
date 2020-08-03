@@ -3,7 +3,6 @@ server:
 spring:
   profiles:
     active: druid
-logging:
-  level:
-    root: debug
+  autoconfigure:
+    exclude: com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
 

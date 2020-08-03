@@ -1,14 +1,13 @@
 spring:
   datasource:
     druid:
-      # druid监测
       stat-view-servlet:
         enabled: true
         loginUsername: admin
-        loginPassword: 123456
+        loginPassword: admin
     dynamic:
-      druid:
-        # 初始化连接大小
+      primary: master #设置默认的数据源或者数据源组,默认值即为master
+      druid: #以下是全局默认值，可以全局更改
         initial-size: 5
         #最大连接池数量
         max-active: 20
@@ -38,24 +37,22 @@ spring:
         #      log4j2
         # 配置多个英文逗号分隔
         filters: stat,wall,slf4j
-
         max-pool-prepared-statement-per-connection-size: 20
         # 合并多个DruidDataSource的监控数据
         use-global-data-source-stat: true
-        # 通过connectProperties属性来打开mergeSql功能；慢SQL记录 SQL优化
-        connect-properties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=500
-      master:
-        druid:
-          url: "jdbc:mysql://119.23.190.71:3307/db_sb_example?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
-          password: "root"
-          username: "root"
-      slave:
-        druid:
-          url: "jdbc:mysql://119.23.190.71:3308/db_sb_example?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
-          password: "root"
-          username: "root"
-
-
+      datasource:
+        master:
+          username: root
+          password: root
+          url: "jdbc:mysql://120.24.45.186:3307/db_sb_example?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
+          druid: # 以下参数针对每个库可以重新设置druid参数
+            initial-size: 2
+        slave:
+          username: root
+          password: root
+          url: "jdbc:mysql://120.24.45.186:3308/db_sb_example?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai"
+          druid: # 以下参数针对每个库可以重新设置druid参数
+            initial-size: 2
 
 
 # oracle     mysql
